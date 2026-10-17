@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="752" viewBox="0 0 1000 752"
+     font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>Recording setup: camera geometry and parallax between the two panels</title>
+  <defs>
+    <!-- refX at the tip (x=9), so each arrowhead ends exactly on its extension line -->
+    <marker id="dim" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+            orient="auto-start-reverse">
+      <path d="M0,1 L9,5 L0,9 z" fill="#59636e"/>
+    </marker>
+  </defs>
+
+  <!-- page -->
+  <rect x="0" y="0" width="1000" height="752" fill="#ffffff"/>
+  <text x="20" y="36" font-size="20" font-weight="700" fill="#1f2328">Recording setup</text>
+  <text x="194" y="36" font-size="14" fill="#59636e">side view · thicknesses exaggerated, not to scale</text>
+
+  <!-- ================================================= LEFT: as built -->
+  <rect x="20" y="56" width="600" height="520" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="40" y="84" font-size="16" font-weight="700" fill="#1f2328">As built</text>
+  <text x="40" y="103" font-size="13" fill="#59636e">phone camera looking straight down</text>
+
+  <!-- phone -->
+  <rect x="200" y="122" width="100" height="14" rx="3" fill="#24292f"/>
+  <rect x="242" y="136" width="16" height="9" rx="2" fill="#57606a"/>
+  <text x="312" y="134" font-size="13" fill="#1f2328">phone camera</text>
+  <text x="312" y="151" font-size="12" fill="#59636e">optical zoom to fill the frame</text>
+
+  <!-- distance: from the lens to the FRONT FACE of the front panel (y=400) -->
+  <line x1="48" y1="145" x2="48" y2="400" stroke="#59636e" stroke-width="1.5"
+        marker-start="url(#dim)" marker-end="url(#dim)"/>
+  <line x1="40" y1="145" x2="240" y2="145" stroke="#afb8c1" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="40" y1="400" x2="88" y2="400" stroke="#afb8c1" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="62" y="278" font-size="15" font-weight="700" fill="#1f2328">30–40 cm</text>
+
+  <!-- stack -->
+  <rect x="90"  y="400" width="320" height="22" fill="#e8f0fb" stroke="#3b6db3" stroke-width="1.2"/>
+  <line x1="90" y1="411" x2="410" y2="411" stroke="#3b6db3" stroke-width="2"/>
+  <rect x="90"  y="424" width="320" height="6"  fill="#c9a7f5" stroke="#8250df" stroke-width="1"/>
+  <rect x="90"  y="432" width="320" height="22" fill="#e8f0fb" stroke="#3b6db3" stroke-width="1.2"/>
+  <line x1="90" y1="443" x2="410" y2="443" stroke="#3b6db3" stroke-width="2"/>
+  <rect x="84"  y="460" width="332" height="14" rx="3" fill="#fff3c4" stroke="#d4a72c" stroke-width="1.2"/>
+
+  <!-- rays: dashed to the front layer, solid to the back layer -->
+  <g stroke="#d97706" fill="none">
+    <line x1="250" y1="145" x2="90"  y2="411" stroke-width="1.3" stroke-dasharray="5 4"/>
+    <line x1="250" y1="145" x2="410" y2="411" stroke-width="1.3" stroke-dasharray="5 4"/>
+    <line x1="250" y1="145" x2="90"  y2="443" stroke-width="1.8"/>
+    <line x1="250" y1="145" x2="410" y2="443" stroke-width="1.8"/>
+  </g>
+
+  <!-- where the back-layer ray crosses the front layer -->
+  <circle cx="107" cy="411" r="3.2" fill="#d97706"/>
+  <circle cx="90"  cy="411" r="3.2" fill="#3b6db3"/>
+  <line x1="90" y1="392" x2="107" y2="392" stroke="#cf222e" stroke-width="2"/>
+  <line x1="90" y1="387" x2="90"  y2="397" stroke="#cf222e" stroke-width="2"/>
+  <line x1="107" y1="387" x2="107" y2="397" stroke="#cf222e" stroke-width="2"/>
+  <text x="102" y="378" font-size="12" font-weight="700" fill="#cf222e" text-anchor="end">offset</text>
+
+  <!-- layer labels -->
+  <g font-size="12" fill="#1f2328">
+    <text x="420" y="415">front panel</text>
+    <text x="420" y="431" fill="#8250df">polarizer film, 30°</text>
+    <text x="420" y="447">back panel</text>
+    <text x="420" y="471" fill="#9a6700">LED backlight</text>
+  </g>
+
+  <!-- legend for the rays -->
+  <g font-size="12" fill="#59636e">
+    <line x1="40" y1="500" x2="70" y2="500" stroke="#d97706" stroke-width="1.3" stroke-dasharray="5 4"/>
+    <text x="78" y="504">to the front panel's edge</text>
+    <line x1="260" y1="500" x2="290" y2="500" stroke="#d97706" stroke-width="1.8"/>
+    <text x="298" y="504">to the back panel's edge</text>
+  </g>
+
+  <g font-size="13" fill="#1f2328">
+    <text x="40" y="534">The two liquid-crystal layers sit about 2 mm apart, so the nearer</text>
+    <text x="40" y="552">one images larger by (D+d)/D. Moving the camera back shrinks</text>
+    <text x="40" y="570">that offset; zooming does not — perspective depends only on distance.</text>
+  </g>
+
+  <!-- ================================================= RIGHT: telecentric -->
+  <rect x="640" y="56" width="340" height="520" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="660" y="84" font-size="16" font-weight="700" fill="#1f2328">Ideal: telecentric lens</text>
+  <text x="660" y="103" font-size="13" fill="#59636e">object-side telecentric</text>
+
+  <!-- camera body + aperture stop -->
+  <rect x="780" y="118" width="60" height="16" rx="3" fill="#24292f"/>
+  <rect x="802" y="134" width="16" height="6"  rx="2" fill="#57606a"/>
+
+  <!-- rays converge to the stop above the lens, run parallel below it -->
+  <g stroke="#d97706" stroke-width="1.8" fill="none">
+    <line x1="810" y1="142" x2="705" y2="185"/>
+    <line x1="810" y1="142" x2="915" y2="185"/>
+  </g>
+
+  <!-- the lens: at least as wide as the panel -->
+  <path d="M 680 185 Q 810 158 940 185 Q 810 212 680 185 Z"
+        fill="#dbe9ff" fill-opacity="0.9" stroke="#3b6db3" stroke-width="1.5"/>
+
+  <!-- stack -->
+  <rect x="705" y="400" width="210" height="22" fill="#e8f0fb" stroke="#3b6db3" stroke-width="1.2"/>
+  <line x1="705" y1="411" x2="915" y2="411" stroke="#3b6db3" stroke-width="2"/>
+  <rect x="705" y="424" width="210" height="6"  fill="#c9a7f5" stroke="#8250df" stroke-width="1"/>
+  <rect x="705" y="432" width="210" height="22" fill="#e8f0fb" stroke="#3b6db3" stroke-width="1.2"/>
+  <line x1="705" y1="443" x2="915" y2="443" stroke="#3b6db3" stroke-width="2"/>
+  <rect x="699" y="460" width="222" height="14" rx="3" fill="#fff3c4" stroke="#d4a72c" stroke-width="1.2"/>
+
+  <g stroke="#d97706" stroke-width="1.8" fill="none">
+    <line x1="705" y1="185" x2="705" y2="443"/>
+    <line x1="915" y1="185" x2="915" y2="443"/>
+  </g>
+
+  <g fill="#1a7f37">
+    <circle cx="705" cy="411" r="3.2"/><circle cx="705" cy="443" r="3.2"/>
+    <circle cx="915" cy="411" r="3.2"/><circle cx="915" cy="443" r="3.2"/>
+  </g>
+  <text x="810" y="385" font-size="12" font-weight="700" fill="#1a7f37" text-anchor="middle">no offset</text>
+
+  <g font-size="13" fill="#1f2328">
+    <text x="660" y="516">Rays arrive parallel to the axis, so every</text>
+    <text x="660" y="534">depth images at the same scale: no parallax</text>
+    <text x="660" y="552">and no keystone. The front lens must be at</text>
+    <text x="660" y="570">least as wide as the panel.</text>
+  </g>
+
+  <!-- ================================================= table -->
+  <text x="20" y="612" font-size="15" font-weight="700" fill="#1f2328">How far apart the two panels land, gap d ≈ 2 mm</text>
+  <text x="20" y="630" font-size="12" fill="#59636e">offset measured in panel pixels at the end of the long axis, 64 px from the centre</text>
+
+  <!-- as-built columns -->
+  <rect x="530" y="640" width="300" height="104" fill="#fff8e1"/>
+  <text x="680" y="636" font-size="11" font-weight="700" fill="#9a6700" text-anchor="middle">AS BUILT</text>
+
+  <g stroke="#d0d7de" stroke-width="1">
+    <line x1="20" y1="640" x2="980" y2="640"/>
+    <line x1="20" y1="666" x2="980" y2="666"/>
+    <line x1="20" y1="692" x2="980" y2="692"/>
+    <line x1="20" y1="718" x2="980" y2="718"/>
+    <line x1="20" y1="744" x2="980" y2="744"/>
+  </g>
+
+  <g font-size="13" fill="#1f2328">
+    <text x="28" y="658" font-weight="700">camera distance</text>
+    <text x="28" y="684">size difference</text>
+    <text x="28" y="710">offset at panel edge</text>
+    <text x="28" y="736">share of a 4-px cell</text>
+  </g>
+  <g font-size="13" fill="#1f2328" text-anchor="middle">
+    <text x="305" y="658" font-weight="700">10 cm</text>
+    <text x="455" y="658" font-weight="700">20 cm</text>
+    <text x="605" y="658" font-weight="700">30 cm</text>
+    <text x="755" y="658" font-weight="700">40 cm</text>
+    <text x="905" y="658" font-weight="700" fill="#1a7f37">telecentric</text>
+
+    <text x="305" y="684">2.0 %</text>
+    <text x="455" y="684">1.0 %</text>
+    <text x="605" y="684">0.67 %</text>
+    <text x="755" y="684">0.50 %</text>
+    <text x="905" y="684" fill="#1a7f37">0</text>
+
+    <text x="305" y="710">1.3 px</text>
+    <text x="455" y="710">0.64 px</text>
+    <text x="605" y="710">0.43 px</text>
+    <text x="755" y="710">0.32 px</text>
+    <text x="905" y="710" fill="#1a7f37">0</text>
+
+    <text x="305" y="736">32 %</text>
+    <text x="455" y="736">16 %</text>
+    <text x="605" y="736">11 %</text>
+    <text x="755" y="736">8 %</text>
+    <text x="905" y="736" fill="#1a7f37">0</text>
+  </g>
+</svg>

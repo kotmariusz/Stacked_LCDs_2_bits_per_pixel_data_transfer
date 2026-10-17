@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+venv/
+.venv/
+
+# Manim: renders stay local, the published copies live in docs/
+/media/
+/videos/
+*.mp4
+*.gif
+!/docs/videos/*.mp4
+!/docs/animations/*.gif
+
+# decoder output
+decoded.png
+measured_states.npy
+fit_params.npy
+
+# STM32CubeIDE
+Debug/
+Release/
+*.o
+*.d
+*.elf
+*.map
+*.list
+.settings/
+.metadata/
+
+# OS
+.DS_Store
+Thumbs.db
