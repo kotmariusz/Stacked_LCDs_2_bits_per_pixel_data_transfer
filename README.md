@@ -34,6 +34,8 @@ Python, where it can be changed without reflashing.
 
 **[DECODING.md](DECODING.md)** follows a real photograph of a text frame and a
 real recording of a 26-frame picture through the decoder, step by step.
+**[Related work](#related-work)** lists the published systems closest to this
+one, and what is different here.
 
 ### The optics
 
@@ -472,6 +474,36 @@ and nothing in the decoder can recover that.
   frames change faster than the panel settles, most cells have reached their
   colour and only the minority caught in transit are wrong — four tight,
   well-separated clusters, a fifth of them holding the wrong value.
+
+---
+
+## Related work
+
+Each ingredient here is in the literature. What a search did not turn up is this
+combination: two independently driven LCD panels with a fixed polarizer between
+them, making a whole grid of four-colour, 2-bit cells that an ordinary phone
+camera reads with nothing on its lens.
+
+| work | what it shares with this project | what differs |
+|---|---|---|
+| [**PolarTag**](https://doi.org/10.1145/3376897.3377854) — Tian et al., HotMobile 2020 | The closest match: four polarization colours per cell, so 2 bits a cell, with pilot cells as colour references and a missing corner for orientation, read from a camera image. | A printed tag of tape layers, so it cannot change. The camera looks through an LCD shutter and a polarizer. |
+| [**PIXEL**](https://doi.org/10.1145/2742647.2745924) — Yang et al., MobiSys 2015 | A twisted-nematic LC layer switches polarization, and a dispersor turns that into colour a phone camera can see. | One bit (two colours) per light, a polarizer on the camera, and indoor-positioning beacons rather than data. |
+| [**POLI**](https://doi.org/10.1145/3081333.3081353) — Chan, Tsai, Lin, MobiSys 2017 | Polarization turned into colours that a camera decodes from its RGB values. | LC shutters on LED lights, read through a polarizer: one link per light rather than a grid, built for range (up to 40 m). |
+| [**ChromaLux**](https://doi.org/10.1145/3447993.3448629) and [**SpectraLux**](https://doi.org/10.1145/3583120.3586966) — Ghiasi et al., MobiCom 2021 and IPSN 2023 | Stacked LC cells between polarizers, using the liquid crystal's birefringence to make colour symbols — the physics of the fifth [animation](#animations). | A single pixel modulating ambient light, read by a colour sensor (about 1 kbps at up to 50 m in daylight) or a spectrometer (8–16 symbols). |
+| [**RetroTurbo**](https://doi.org/10.1145/3387514.3406229) — Wu et al., SIGCOMM 2020 | Many LC cells combined into multi-level, polarization-based QAM symbols. | Retroreflector backscatter to photodiodes, about 8 kbps, using polarization and brightness rather than colour. |
+| [**PixNet**](https://doi.org/10.1145/1859995.1860012) — MobiCom 2010, and [**COBRA**](https://doi.org/10.1145/2307636.2307645) — MobiSys 2012 | Screen-to-camera links: find the screen, undo the perspective, classify the cells, send many frames. | Ordinary colour screens with no polarization involved, and much faster: PixNet reaches 12 Mb/s. |
+
+On the hobby side, the nearest relative is the hidden-message LCD that
+[Hackaday covered in 2015](https://hackaday.com/2015/07/15/trick-google-used-hides-secret-messages-on-lcd-screens/):
+an LCD with a polarizer stripped off, whose image appears only through a
+polarizing filter. Polarizers removed again, but for viewing, not for data.
+
+The real difference is where the last polarizer sits. PolarTag, PIXEL and POLI
+keep the information in the light's polarization, which no camera sees on its
+own, so they put the analyser on the camera. This stack carries its analyser on
+the front of the display: the colours are visible to anyone, and any phone can
+record them. The price is speed — under 100 bytes a second at the 1.5 s dwell
+that decodes reliably (see [Frame rate](#frame-rate-and-why-it-is-the-hard-limit)).
 
 ---
 
