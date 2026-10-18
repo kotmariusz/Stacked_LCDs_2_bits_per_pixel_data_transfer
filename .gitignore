@@ -12,6 +12,8 @@ venv/
 *.gif
 !/docs/videos/*.mp4
 !/docs/animations/*.gif
+!/docs/decoding/*.gif
+!/examples/video/*.mp4
 
 # decoder output
 decoded.png

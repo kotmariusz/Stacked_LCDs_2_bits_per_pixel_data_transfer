@@ -32,6 +32,9 @@ checksums, whitening or picture formats — it displays the cell states it is
 handed. Everything that makes the link survive a handheld phone camera lives in
 Python, where it can be changed without reflashing.
 
+**[DECODING.md](DECODING.md)** follows a real photograph of a text frame and a
+real recording of a 26-frame picture through the decoder, step by step.
+
 ### The optics
 
 The stack is three polarizers in series. The outer two turn between 0° and 90° —
@@ -285,15 +288,22 @@ firmware/
   mains/
     main_picture.c          send a picture as N frames in a loop
     main_datatx.c           send one text frame, refreshed
+    main_frames.c           show the frames from frames.h, made by the Colab text cell
     main_selftest.c         cycle the four states so the decoder can calibrate
     main_pixelcheck.c       stripes / ruler / grid patterns + SPI speed sweep
 colab/
   lcd_codec_colab.ipynb     encoder, decoder, and the picture codec
+examples/
+  text/text_frame.jpg       a 123-character text frame, photographed with a phone
+  video/picture_26_frames.mp4   a 128x96 picture sent as 26 frames, one 44 s recording
 docs/
   recording-setup.svg       camera geometry and the parallax between panels
   setup-*.jpg               photos of the build
+  decoding/                 the figures in DECODING.md
   videos/                   the five animations, 4K MP4
   animations/               their GIF previews, shown in this README
+DECODING.md                 the decoder, step by step, on the examples
+make_decoding_figures.py    draws every figure in it, with the notebook's own decoder
 OPTICS.md                   the full optical analysis
 fit_optics.py               reproduces every number in it
 polarizer_states.py         Manim animations: the polarizer argument, and why the LCD makes colour
@@ -353,21 +363,24 @@ did not. Measured after: 0 of 65.
 
 ### Capacity
 
-| CELL_PX | grid | cells | bytes/frame | picture bytes/frame |
-|---|---|---|---|---|
-| 8 | 16×8 | 128 | 32 | 23 |
-| 4 | 32×16 | 512 | 128 | 119 |
+| CELL_PX | grid | cells | bytes/frame | text characters | picture bytes/frame |
+|---|---|---|---|---|---|
+| 8 | 16×8 | 128 | 31 | 28 | 23 |
+| 4 | 32×16 | 512 | 127 | 124 | 119 |
 
-Three corner markers plus a diagonal partner make the pattern chiral, which
-resolves all eight possible camera orientations — the decoder does not care
-which way up the panel is photographed.
+Four cells of every frame are markers, always showing `00`, `01`, `10` and `11`:
+three corners plus the cell diagonally inside the bottom-left one. The pattern is
+chiral, so it resolves all eight possible camera orientations, and because the
+markers carry the four states, they also say which colour is which. The decoder
+does not care which way up the panel is photographed.
 
 ---
 
 ## Decoding
 
-The notebook has three cells: send text, send a picture, decode. Decoding a
-photograph or a video goes through the same path:
+**[DECODING.md](DECODING.md)** walks through all of this on real examples, with
+figures. In short: the notebook has three cells — send text, send a picture,
+decode — and decoding a photograph or a video goes through the same path:
 
 1. **Locate the panel** — largest bright quadrilateral, then perspective-correct.
 2. **Fit the grid** — shift and stretch the quad in units of cells, ranked by
@@ -377,6 +390,10 @@ photograph or a video goes through the same path:
    not as a lighting problem.
 3. **Classify cells in RGB** with k-means and farthest-point seeding. Both the
    raw and illumination-flattened versions are tried and the CRC picks.
+   k-means does not know which group is which state; the four **marker cells**
+   do, and they also say which way up the frame is, so usually a single reading
+   is checked. Only if a marker cell is misread are all 96 combinations of
+   orientation and colour assignment tried.
 4. **Harvest a flat field** — every frame that decodes reveals the true state of
    each of its cells, which measures the illumination cell by cell. Classifying
    the failures against their own cells' reference colours removes the gradient
