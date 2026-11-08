@@ -310,6 +310,7 @@ OPTICS.md                   the full optical analysis
 fit_optics.py               reproduces every number in it
 polarizer_states.py         Manim animations: the polarizer argument, and why the LCD makes colour
 render_videos.sh            renders them, 4K by default, and publishes them to docs/
+LICENSE                     MIT (the CubeMX-generated firmware parts: see Credits)
 ```
 
 To build, copy one of `mains/*.c` over `Core/Src/main.c` in the CubeIDE project
@@ -487,11 +488,11 @@ camera reads with nothing on its lens.
 | work | what it shares with this project | what differs |
 |---|---|---|
 | [**PolarTag**](https://doi.org/10.1145/3376897.3377854) — Tian et al., HotMobile 2020 | The closest match: four polarization colours per cell, so 2 bits a cell, with pilot cells as colour references and a missing corner for orientation, read from a camera image. | A printed tag of tape layers, so it cannot change. The camera looks through an LCD shutter and a polarizer. |
-| [**PIXEL**](https://doi.org/10.1145/2742647.2745924) — Yang et al., MobiSys 2015 | A twisted-nematic LC layer switches polarization, and a dispersor turns that into colour a phone camera can see. | One bit (two colours) per light, a polarizer on the camera, and indoor-positioning beacons rather than data. |
+| [**PIXEL**](https://doi.org/10.1145/2742647.2742648) — Yang et al., MobiSys 2015 | A twisted-nematic LC layer switches polarization, and a dispersor turns that into colour a phone camera can see. | One bit (two colours) per light, a polarizer on the camera, and indoor-positioning beacons rather than data. |
 | [**POLI**](https://doi.org/10.1145/3081333.3081353) — Chan, Tsai, Lin, MobiSys 2017 | Polarization turned into colours that a camera decodes from its RGB values. | LC shutters on LED lights, read through a polarizer: one link per light rather than a grid, built for range (up to 40 m). |
 | [**ChromaLux**](https://doi.org/10.1145/3447993.3448629) and [**SpectraLux**](https://doi.org/10.1145/3583120.3586966) — Ghiasi et al., MobiCom 2021 and IPSN 2023 | Stacked LC cells between polarizers, using the liquid crystal's birefringence to make colour symbols — the physics of the fifth [animation](#animations). | A single pixel modulating ambient light, read by a colour sensor (about 1 kbps at up to 50 m in daylight) or a spectrometer (8–16 symbols). |
 | [**RetroTurbo**](https://doi.org/10.1145/3387514.3406229) — Wu et al., SIGCOMM 2020 | Many LC cells combined into multi-level, polarization-based QAM symbols. | Retroreflector backscatter to photodiodes, about 8 kbps, using polarization and brightness rather than colour. |
-| [**PixNet**](https://doi.org/10.1145/1859995.1860012) — MobiCom 2010, and [**COBRA**](https://doi.org/10.1145/2307636.2307645) — MobiSys 2012 | Screen-to-camera links: find the screen, undo the perspective, classify the cells, send many frames. | Ordinary colour screens with no polarization involved, and much faster: PixNet reaches 12 Mb/s. |
+| [**PixNet**](https://doi.org/10.1145/1859995.1860012) — Perli, Ahmed, Katabi, MobiCom 2010, and [**COBRA**](https://doi.org/10.1145/2307636.2307645) — Hao, Zhou, Xing, MobiSys 2012 | Screen-to-camera links: find the screen, undo the perspective, classify the cells, send many frames. | Ordinary colour screens with no polarization involved, and much faster: PixNet reaches 12 Mb/s at 10 m. |
 
 On the hobby side, the nearest relative is the hidden-message LCD that
 [Hackaday covered in 2015](https://hackaday.com/2015/07/15/trick-google-used-hides-secret-messages-on-lcd-screens/):
@@ -505,6 +506,35 @@ the front of the display: the colours are visible to anyone, and any phone can
 record them. The price is speed — under 100 bytes a second at the 1.5 s dwell
 that decodes reliably (see [Frame rate](#frame-rate-and-why-it-is-the-hard-limit)).
 
+### References
+
+1. Z. Tian, C. J. Carver, Q. Shao, M. Roznere, A. Quattrini Li and X. Zhou, "PolarTag:
+   Invisible data with light polarization," *Proc. HotMobile '20*, pp. 74–79, 2020.
+   doi:[10.1145/3376897.3377854](https://doi.org/10.1145/3376897.3377854)
+2. Z. Yang, Z. Wang, J. Zhang, C. Huang and Q. Zhang, "Wearables can afford: Light-weight
+   indoor positioning with visible light" (PIXEL), *Proc. MobiSys '15*, pp. 317–330, 2015.
+   doi:[10.1145/2742647.2742648](https://doi.org/10.1145/2742647.2742648)
+3. C.-L. Chan, H.-M. Tsai and K. C.-J. Lin, "POLI: Long-range visible light communications
+   using polarized light intensity modulation," *Proc. MobiSys '17*, pp. 109–120, 2017.
+   doi:[10.1145/3081333.3081353](https://doi.org/10.1145/3081333.3081353)
+4. S. K. Ghiasi, M. Zúñiga and K. Langendoen, "A principled design for passive light
+   communication" (ChromaLux), *Proc. MobiCom '21*, 2021.
+   doi:[10.1145/3447993.3448629](https://doi.org/10.1145/3447993.3448629)
+5. S. K. Ghiasi, V. Dsouza, K. Langendoen and M. Zúñiga, "SpectraLux: Towards exploiting
+   the full spectrum with passive VLC," *Proc. IPSN '23*, 2023.
+   doi:[10.1145/3583120.3586966](https://doi.org/10.1145/3583120.3586966)
+6. Y. Wu, P. Wang, K. Xu, L. Feng and C. Xu, "Turboboosting visible light backscatter
+   communication" (RetroTurbo), *Proc. SIGCOMM '20*, pp. 186–197, 2020.
+   doi:[10.1145/3387514.3406229](https://doi.org/10.1145/3387514.3406229)
+7. S. D. Perli, N. Ahmed and D. Katabi, "PixNet: Interference-free wireless links using
+   LCD-camera pairs," *Proc. MobiCom '10*, pp. 137–148, 2010.
+   doi:[10.1145/1859995.1860012](https://doi.org/10.1145/1859995.1860012)
+8. T. Hao, R. Zhou and G. Xing, "COBRA: Color barcode streaming for smartphone systems,"
+   *Proc. MobiSys '12*, pp. 85–98, 2012.
+   doi:[10.1145/2307636.2307645](https://doi.org/10.1145/2307636.2307645)
+9. The optics: R. C. Jones (1941) and C. H. Gooch and H. A. Tarry (1975) — full
+   references in [OPTICS.md](OPTICS.md#references).
+
 ---
 
 ## Status
@@ -513,3 +543,31 @@ Working end to end: text and pictures, from either a video or individual
 photographs, checksum-verified. Open threads: an OV7670 camera module to replace
 the phone (waiting on I²C pull-ups), and error correction so a single bad cell
 stops costing a whole chunk.
+
+---
+
+## Credits
+
+- The hardware, the photos, the recordings and the 128×96 test picture are my own.
+- The firmware skeleton was generated with STM32CubeMX: `firmware/spi.c` and the
+  code outside the USER CODE sections of `firmware/mains/main_*.c` are
+  © STMicroelectronics and stay under ST's licence terms (see the file headers;
+  the STM32CubeF1 HAL they call is BSD-3-Clause).
+- Animations: [Manim Community](https://www.manim.community/) v0.22.0 (MIT) — The
+  Manim Community Developers, *Manim – Mathematical Animation Framework*.
+- Decoder and figures: [OpenCV](https://opencv.org/) (Apache-2.0; G. Bradski,
+  "The OpenCV Library," *Dr. Dobb's Journal of Software Tools*, 2000),
+  [NumPy](https://numpy.org/) (C. R. Harris et al., *Nature* 585, 357–362, 2020,
+  doi:[10.1038/s41586-020-2649-2](https://doi.org/10.1038/s41586-020-2649-2)),
+  [SciPy](https://scipy.org/) (P. Virtanen et al., *Nature Methods* 17, 261–272, 2020,
+  doi:[10.1038/s41592-019-0686-2](https://doi.org/10.1038/s41592-019-0686-2)),
+  [Matplotlib](https://matplotlib.org/) (J. D. Hunter, *Comput. Sci. Eng.* 9(3),
+  90–95, 2007, doi:[10.1109/MCSE.2007.55](https://doi.org/10.1109/MCSE.2007.55))
+  and [Pillow](https://python-pillow.org/).
+- Much of the code and of this documentation was written with the help of an AI
+  assistant (Claude, by Anthropic).
+
+## Licence
+
+MIT — see [LICENSE](LICENSE). The STM32CubeMX-generated parts of the firmware
+keep STMicroelectronics' licence terms (see Credits).

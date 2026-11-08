@@ -4,6 +4,19 @@
   * @file           : main.c
   * @brief          : Show the frames from frames.h, made by the Colab notebook
   ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2026 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  * The code inside the USER CODE sections and the description below:
+  * Copyright (c) 2026 Mariusz Kot, MIT License (LICENSE in the repository root).
+  *
+  ******************************************************************************
   *
   * The Send text cell in colab/lcd_codec_colab.ipynb turns a message into
   * finished frames - header, CRC, markers and all - and writes them to

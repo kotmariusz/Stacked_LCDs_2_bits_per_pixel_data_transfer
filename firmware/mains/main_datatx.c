@@ -4,9 +4,22 @@
   * @file           : main.c
   * @brief          : Send a text message as a 2-bit optical code
   ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2026 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  * The code inside the USER CODE sections and the description below:
+  * Copyright (c) 2026 Mariusz Kot, MIT License (LICENSE in the repository root).
+  *
+  ******************************************************************************
   *
   * Encodes MESSAGE below into the two stacked panels, one static frame, for
-  * reading back with screen_grid_capture_v8.py.
+  * reading back with the decoder in colab/lcd_codec_colab.ipynb.
   *
   * FRAME FORMAT
   *   The grid is CODE_W x CODE_H cells, each carrying 2 bits, read row by row

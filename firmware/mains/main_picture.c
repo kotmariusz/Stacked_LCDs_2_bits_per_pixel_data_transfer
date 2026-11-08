@@ -4,6 +4,19 @@
   * @file           : main.c
   * @brief          : Send a picture as a sequence of 2-bit optical frames
   ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2026 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  * The code inside the USER CODE sections and the description below:
+  * Copyright (c) 2026 Mariusz Kot, MIT License (LICENSE in the repository root).
+  *
+  ******************************************************************************
   *
   * A picture does not fit in one frame, so the Colab notebook cuts it into
   * chunks and writes them out as picture_frames.h. This file cycles through

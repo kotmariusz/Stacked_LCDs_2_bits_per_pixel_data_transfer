@@ -140,12 +140,12 @@ polarizers. A polarizer projects and discards; a retarder is unitary — it keep
 the light and reshapes the polarization, in general into an ellipse. Malus has
 no way to represent an ellipse.
 
-For three *ideal polarizers*, Jones calculus and Malus agree to 8×10⁻¹⁷, which
+For three *ideal polarizers*, Jones calculus [1] and Malus agree to 8×10⁻¹⁷, which
 is machine precision — each projector leaves the light in a definite linear
 state with no phase to carry, so the amplitudes are just products of cosines.
 The extra machinery only earns its keep once a retarder is in the chain.
 
-The cells are modelled as 90° twisted-nematic layers in the Gooch–Tarry form,
+The cells are modelled as 90° twisted-nematic layers in the Gooch–Tarry form [2],
 with retardance Δ = 2πΔnd/λ and
 
     X = √(φ² + (Δ/2)²)
@@ -216,3 +216,14 @@ luminance — rests on measured separations, not on any of this.
 - The 3:1 intensity difference between the two mixed states exists *between* the
   panels. A photodiode or partial tap in the gap would read a state the exit
   cannot see.
+
+---
+
+## References
+
+1. R. C. Jones, "A new calculus for the treatment of optical systems. I. Description and
+   discussion of the calculus," *J. Opt. Soc. Am.*, vol. 31, no. 7, pp. 488–493, 1941.
+   doi:[10.1364/JOSA.31.000488](https://doi.org/10.1364/JOSA.31.000488)
+2. C. H. Gooch and H. A. Tarry, "The optical properties of twisted nematic liquid crystal
+   structures with twist angles ≤90°," *J. Phys. D: Appl. Phys.*, vol. 8, no. 13,
+   pp. 1575–1584, 1975. doi:[10.1088/0022-3727/8/13/020](https://doi.org/10.1088/0022-3727/8/13/020)

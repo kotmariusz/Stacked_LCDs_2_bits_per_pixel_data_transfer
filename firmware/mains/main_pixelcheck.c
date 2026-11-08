@@ -4,6 +4,19 @@
   * @file           : main.c
   * @brief          : Find out WHY pixels go missing or land a pixel out
   ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2026 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  * The code inside the USER CODE sections and the description below:
+  * Copyright (c) 2026 Mariusz Kot, MIT License (LICENSE in the repository root).
+  *
+  ******************************************************************************
   *
   * Missing or shifted pixels have several possible causes and they need
   * different fixes, so guessing is expensive. This firmware separates them.
